@@ -1,0 +1,88 @@
+
+#===============================#
+# CS176 Fall 2013 Problem Set 5 #
+# HMM Implementation - README   #
+# Michael Ting                  #
+# 9 December 2013               #
+#===============================#
+
+* Source code can be found in hmm.py
+
+*** NOTE: This program takes ~4-5 minutes to finish running! ***
+
+For EM, this program takes about 15 seconds per EM iteration.
+EM data is output in stdout, so we can see values change at 
+each iteration of the algorithm.
+
+#=============#
+# Quick Start #
+#=============#
+
+Running the command: 
+
+$ python hmm.py sequences_4mu.fasta 4mu initial_parameters_4mu.txt
+
+would produce 4 output files in the current directory:
+
+- estimated_parameters_4mu.txt
+- likelihoods_4mu.txt
+- decodings_initial_4mu.txt
+- decodings_estimated_4mu.txt
+
+where the argument "4mu" is incorporated into the names of each of
+the output files.
+
+#========#
+# STDOUT #
+#========#
+
+Various details are displayd on the standard output. Statements printed
+to stdout will indicate what task the program is currently performing.
+For the EM algorithm, estimates from each of the 15 iterations will be
+displayed. Further calculations are not as detailed on stdout, but stdout
+will still indicate the calculations that are being performed.
+
+#=========#
+# Details #
+#=========#
+
+You can observe the command line options by using:
+
+$ python hmm.py --help
+
+The script requires 3 arguments:
+
+$ python hmm.py infile muname initparams
+
+- infile: A FASTA file of two sequences for input
+- muname: A string corresponding to the mu name, e.g. "mu","2mu","5mu"
+- initparams: The input initial parameters txt file
+
+An example run would be:
+
+$ python hmm.py sequences_4mu.fasta 4mu initial_parameters_4mu.txt
+
+Notice that the "muname" argument is a string corresponding to the
+value of mu used in the input files. This is required for naming
+output files that result from running the program.
+
+** Take care to enter the muname argument correctly! Files will be
+output with * corresponding to the "muname" argument as such:
+
+- estimated_parameters_*.txt
+- likelihoods_*.txt
+- decodings_initial_*.txt
+- decodings_estimated_*.txt
+
+For example, entering the command:
+
+$ python hmm.py sequences_4mu.fasta 2mu initial_parameters_4mu.txt
+
+would calculate results for the 4mu data, but label all output files as:
+
+- estimated_parameters_2mu.txt
+- likelihoods_2mu.txt
+- decodings_initial_2mu.txt
+- decodings_estimated_2mu.txt
+
+We do NOT want this, since we could end up mixing up the data.
